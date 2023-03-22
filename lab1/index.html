@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <div id="container" tabindex="0" class="blockquote text-nowrap"></div>
+    <script>
+      var container = document.getElementById('container');
+var firstChar = container.textContent.charAt(0); // 取得第一個字元
+var randChars = getRandomChars(); // 取得亂數字元
+
+window.onload = function() {
+  container.textContent = randChars + container.textContent.substring(randChars.length);
+}
+
+window.addEventListener("keyup", function(e) {
+ console.log(e.key);
+ if (e.key == 'Escape') {
+  container.textContent = "";
+ }
+ else if (e.key == 'Backspace') {
+   var str = container.textContent;
+   container.textContent = str.substring(0, str.length-1);
+ }
+ else {
+   firstChar = container.textContent.charAt(0); // 更新第一個字元
+   if (e.key == firstChar) { // 如果打入字元和第一個字元相等時，消除該字元
+     container.textContent = container.textContent.substring(1);
+     container.textContent += getRandomChars(); // 在container div中亂數產生a到z的 1到3個字元的字串接在字串後
+    }
+  }
+});
+
+function getRandomChars() {
+  var numChars = Math.floor(Math.random() * 3) + 1; // 產生 1 到 3 個字元
+  var chars = "";
+  for (var i = 0; i < numChars; i++) {
+    chars += String.fromCharCode(Math.floor(Math.random() * 26) + 97); // 產生 a 到 z 的亂數字元
+  }
+  return chars;
+}
+
+    </script>
+  </body>
+</html>
