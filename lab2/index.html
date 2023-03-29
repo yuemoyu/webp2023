@@ -18,10 +18,10 @@ function addNewData(){
 }
 
 function delOldData(){
-  var mytable=document.getElementById("csie");
-  var count= document.getElementById("csie").rows.length;
-  if(count!=1){
-      mytable.deleteRow(-1);
+  var myTable=document.getElementById("csie");
+  var rowCount= document.getElementById("csie").rows.length;
+  if(rowCount>1){
+      myTable.deleteRow(-1);
     }
 }
 </script>
